@@ -11,12 +11,9 @@ from .models import PageView
 def index(request):
     hostname = os.getenv('HOSTNAME', 'unknown')
     PageView.objects.create(hostname=hostname)
+    str="Hello Word"
 
-    return render(request, 'welcome/index.html', {
-        'hostname': hostname,
-        'database': database.info(),
-        'count': PageView.objects.count()
-    })
+    return str
 
 def health(request):
     return HttpResponse(PageView.objects.count())
